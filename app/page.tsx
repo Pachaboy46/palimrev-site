@@ -1,65 +1,226 @@
-import Image from "next/image";
+"use client";
+
+import { useState, useEffect } from "react";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
+import Navbar, { type TabId } from "@/components/layout/Navbar";
+import Footer from "@/components/layout/Footer";
+import DocsDemo from "@/components/sections/DocsDemo";
+import Contact from "@/components/sections/Contact";
 
 export default function Home() {
+  const [activeTab, setActiveTab] = useState<TabId | null>(null);
+
+  // ── Mouse tracking ───────────────────────────────────────────
+  const rawX = useMotionValue(0.5);
+  const rawY = useMotionValue(0.5);
+
+  // Springs: low stiffness = slow, floaty hologram feel
+  const springX = useSpring(rawX, { stiffness: 35, damping: 22 });
+  const springY = useSpring(rawY, { stiffness: 35, damping: 22 });
+
+  // Parallax translation — image moves opposite to cursor
+  const bgX = useTransform(springX, [0, 1], [20, -20]);
+  const bgY = useTransform(springY, [0, 1], [15, -15]);
+
+  // 3D tilt — subtle rotation follows cursor
+  const rotateX = useTransform(springY, [0, 1], [3, -3]);
+  const rotateY = useTransform(springX, [0, 1], [-4, 4]);
+
+  useEffect(() => {
+    const onMouseMove = (e: MouseEvent) => {
+      rawX.set(e.clientX / window.innerWidth);
+      rawY.set(e.clientY / window.innerHeight);
+    };
+    window.addEventListener("mousemove", onMouseMove);
+    return () => window.removeEventListener("mousemove", onMouseMove);
+  }, [rawX, rawY]);
+
+  // ── Tab navigation ───────────────────────────────────────────
+  const handleTabClick = (tab: TabId) => {
+    setActiveTab(tab);
+    const el = document.getElementById("docs-demo");
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 90;
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
   return (
-    <div className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black">
-      <main className="flex flex-1 w-full max-w-3xl flex-col items-center justify-between py-32 px-16 bg-white dark:bg-black sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
+    <>
+      {/* ── Fixed parallax background ────────────────────────── */}
+      <motion.div
+        style={{
+          position: "fixed",
+          inset: "-40px",
+          zIndex: -1,
+          x: bgX,
+          y: bgY,
+          rotateX,
+          rotateY,
+          transformPerspective: 1200,
+        }}
+      >
+        {/* Dark base */}
+        <div style={{ position: "absolute", inset: 0, background: "#111111" }} />
+
+        {/* Isometric grid — two axis lines at 30° and -30° = true rhombus mesh */}
+        <svg
+          style={{ position: "absolute", inset: "-20%", width: "140%", height: "140%" }}
+          aria-hidden="true"
+        >
+          <defs>
+            {/* Lines running at +30° */}
+            <pattern
+              id="iso-a"
+              x="0"
+              y="0"
+              width="60"
+              height="60"
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(30)"
+            >
+              <line x1="0" y1="0" x2="0" y2="60" stroke="rgba(255,255,255,0.13)" strokeWidth="0.75" />
+            </pattern>
+            {/* Lines running at -30° */}
+            <pattern
+              id="iso-b"
+              x="0"
+              y="0"
+              width="60"
+              height="60"
+              patternUnits="userSpaceOnUse"
+              patternTransform="rotate(-30)"
+            >
+              <line x1="0" y1="0" x2="0" y2="60" stroke="rgba(255,255,255,0.13)" strokeWidth="0.75" />
+            </pattern>
+          </defs>
+          <rect width="100%" height="100%" fill="url(#iso-a)" />
+          <rect width="100%" height="100%" fill="url(#iso-b)" />
+        </svg>
+
+        {/* Accent blue glow — upper right */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse 70% 60% at 90% 5%, rgba(164,221,242,0.22) 0%, rgba(164,221,242,0.06) 45%, transparent 70%)",
+          }}
         />
-        <div className="flex flex-col items-center gap-6 text-center sm:items-start sm:text-left">
-          <h1 className="max-w-xs text-3xl font-semibold leading-10 tracking-tight text-black dark:text-zinc-50">
-            To get started, edit the page.tsx file.
-          </h1>
-          <p className="max-w-md text-lg leading-8 text-zinc-600 dark:text-zinc-400">
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+
+        {/* Edge vignette — darkens corners so content reads clearly */}
+        <div
+          style={{
+            position: "absolute",
+            inset: 0,
+            background:
+              "radial-gradient(ellipse 110% 90% at 50% 50%, transparent 35%, rgba(0,0,0,0.55) 100%)",
+          }}
+        />
+      </motion.div>
+
+      <Navbar activeTab={activeTab} onTabClick={handleTabClick} />
+      <main style={{ paddingTop: "var(--navbar-h)" }}>
+
+        {/* ── Hero ─────────────────────────────────────────────── */}
+        <section
+          style={{
+            minHeight: "100vh",
+            display: "flex",
+            alignItems: "flex-start",
+            paddingTop: "170px",
+            position: "relative",
+          }}
+        >
+          <div
+            style={{
+              position: "absolute",
+              inset: 0,
+              background: "rgba(24,24,24,0.10)",
+              zIndex: 0,
+            }}
+          />
+          <div style={{ position: "relative", zIndex: 1, padding: "0 4rem" }}>
+            <motion.h1
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
+              style={{
+                fontFamily: "var(--font-display)",
+                fontSize: "clamp(2.1rem, 5.35vw, 4.97rem)",
+                fontWeight: 800,
+                textTransform: "uppercase",
+                lineHeight: 1.0,
+                letterSpacing: "-0.02em",
+                marginBottom: "1.5rem",
+                maxWidth: "520px",
+              }}
             >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              className="font-medium text-zinc-950 dark:text-zinc-50"
+              Your Docs Are Overdue for an Upgrade.
+            </motion.h1>
+            <motion.p
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.28 }}
+              style={{
+                fontFamily: "var(--font-body)",
+                fontSize: "1.05rem",
+                color: "rgba(255,255,255,0.7)",
+                maxWidth: "440px",
+                marginBottom: "2.5rem",
+                lineHeight: 1.6,
+              }}
             >
-              Learning
-            </a>{" "}
-            center.
-          </p>
-        </div>
-        <div className="flex flex-col gap-4 text-base font-medium sm:flex-row">
-          <a
-            className="flex h-12 w-full items-center justify-center gap-2 rounded-full bg-foreground px-5 text-background transition-colors hover:bg-[#383838] dark:hover:bg-[#ccc] md:w-[158px]"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
-            />
-            Deploy Now
-          </a>
-          <a
-            className="flex h-12 w-full items-center justify-center rounded-full border border-solid border-black/[.08] px-5 transition-colors hover:border-transparent hover:bg-black/[.04] dark:border-white/[.145] dark:hover:bg-[#1a1a1a] md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
-        </div>
+              We migrate and modernize legacy documentation into searchable,
+              web-hosted formats your team and customers will actually use.
+            </motion.p>
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1], delay: 0.46 }}
+              style={{ display: "flex", gap: "1rem", flexWrap: "wrap" }}
+            >
+              <a
+                href="#contact"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "var(--color-bg)",
+                  background: "var(--color-accent)",
+                  padding: "0.9rem 2rem",
+                }}
+              >
+                Get a Free Estimate
+              </a>
+              <a
+                href="#docs-demo"
+                style={{
+                  fontFamily: "var(--font-body)",
+                  fontSize: "0.75rem",
+                  fontWeight: 700,
+                  letterSpacing: "0.1em",
+                  textTransform: "uppercase",
+                  color: "var(--color-text)",
+                  border: "1px solid rgba(255,255,255,0.35)",
+                  padding: "0.9rem 2rem",
+                }}
+              >
+                See How It Works
+              </a>
+            </motion.div>
+          </div>
+        </section>
+
+        {/* ── DocsDemo ─────────────────────────────────────────── */}
+        <DocsDemo activeTab={activeTab} />
+
+        {/* ── Contact ──────────────────────────────────────────── */}
+        <Contact />
       </main>
-    </div>
+      <Footer />
+    </>
   );
 }
