@@ -44,24 +44,41 @@
         <section class="split" id="split">
             <!-- BEFORE side -->
             <div class="split__before">
-                <div class="split__doc split__doc--legacy">
-                    <div class="legacy-bar">
-                        <span>📎</span> DRAFT_v3_FINAL_FINAL.docx
-                    </div>
-                    <div class="legacy-content">
-                        <div class="legacy-title">PTZ Camera — User Manual</div>
-                        <div class="legacy-block"></div>
-                        <div class="legacy-block w70"></div>
-                        <div class="legacy-block w90"></div>
-                        <div class="legacy-block w60"></div>
-                        <div class="legacy-img"></div>
-                        <div class="legacy-block w80"></div>
-                        <div class="legacy-block w50"></div>
-                        <div class="legacy-block"></div>
-                        <div class="legacy-block w70"></div>
-                        <div class="legacy-block w40"></div>
-                    </div>
+              <div class="split__doc split__doc--legacy pdf-viewer" aria-hidden="true">
+                <!-- PDF toolbar -->
+                <div class="pdf-toolbar">
+                  <div class="pdf-toolbar__icon">PDF</div>
+                  <div class="pdf-toolbar__title">User_Manual_v4.pdf</div>
+                  <div class="pdf-toolbar__controls">
+                    <div class="pdf-ctrl"></div>
+                    <div class="pdf-ctrl"></div>
+                    <div class="pdf-ctrl pdf-ctrl--wide"></div>
+                  </div>
                 </div>
+                <!-- PDF page -->
+                <div class="pdf-page">
+                  <div class="pdf-page__header">
+                    <div class="pdf-page__logo-block"></div>
+                    <div class="pdf-page__title-text">PTZ Camera System<br><span>Installation &amp; Configuration Guide</span></div>
+                  </div>
+                  <div class="pdf-page__divider"></div>
+                  <div class="pdf-page__section-title">1. System Overview</div>
+                  <div class="pdf-page__body-text">This guide covers initial hardware setup, network configuration, and integration with third-party control systems. Please read all safety precautions before beginning installation.</div>
+                  <div class="pdf-page__section-title">2. Package Contents</div>
+                  <div class="pdf-page__table">
+                    <div class="pdf-table__row pdf-table__row--header"><span>Item</span><span>Qty</span><span>Part No.</span></div>
+                    <div class="pdf-table__row"><span>Camera Unit</span><span>1</span><span>PT-4K-01</span></div>
+                    <div class="pdf-table__row"><span>Power Supply</span><span>1</span><span>PS-12V-3A</span></div>
+                    <div class="pdf-table__row"><span>Mounting Bracket</span><span>1</span><span>MB-CEIL-01</span></div>
+                    <div class="pdf-table__row"><span>Ethernet Cable (3m)</span><span>1</span><span>CAT6-3M</span></div>
+                  </div>
+                  <div class="pdf-page__body-text">Verify all items are present before proceeding. Contact support if any components are missing or damaged during shipping.</div>
+                  <div class="pdf-page__footer">
+                    <div class="pdf-page__footer-text">PTZ Camera System — Installation Guide v4.2</div>
+                    <div class="pdf-page__page-num">1</div>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <!-- Divider -->
@@ -79,22 +96,142 @@
 
             <!-- AFTER side -->
             <div class="split__after">
-                <div class="split__doc split__doc--modern">
-                    <div class="modern-bar">
-                        <div class="modern-dots"><span></span><span></span><span></span></div>
-                        <span>quickstart.mdx</span>
-                        <span class="modern-badge">v2.4.0</span>
-                    </div>
-                    <div class="modern-content">
-                        <h4>Quick Start Guide</h4>
-                        <p>Connect your device to a PoE network switch using a Cat6 Ethernet cable. The status LED will blink amber during boot, then solid green when ready.</p>
-                        <div class="modern-code">
-                            <span class="cm"># Connect via browser</span><br>
-                            <span class="kw">open</span> http://&lt;device-ip&gt;/setup
-                        </div>
-                        <p class="modern-note">See <a href="#">Network Requirements</a> for supported switch models.</p>
-                    </div>
+              <div class="split__doc split__doc--modern docs-mockup" aria-hidden="true">
+                <!-- Topbar -->
+                <div class="docs-mockup__topbar">
+                  <div class="docs-mockup__logo"></div>
+                  <div class="docs-mockup__nav" id="docs-tabs-nav">
+                    <span class="docs-mockup__navtext docs-mockup__navtext--active" data-tab="0">Docs</span>
+                    <span class="docs-mockup__navtext" data-tab="1">API</span>
+                    <span class="docs-mockup__navtext" data-tab="2">Guides</span>
+                    <span class="docs-mockup__navtext" data-tab="3">Blog</span>
+                  </div>
+                  <div class="docs-mockup__search-text">⌘K Search...</div>
                 </div>
+                <!-- Tab panels container -->
+                <div class="docs-tabs" id="docs-tabs">
+                  <!-- Panel 0: Docs (active) -->
+                  <div class="docs-tabs__panel docs-tabs__panel--active" data-panel="0">
+                    <div class="docs-mockup__body">
+                      <div class="docs-mockup__sidebar">
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ Getting Started</div>
+                          <div class="docs-tree__item docs-tree__item--active">Overview</div>
+                          <div class="docs-tree__item">Quick Start</div>
+                          <div class="docs-tree__item">Installation</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ Mesh Nodes</div>
+                          <div class="docs-tree__item docs-tree__item--nested">OM-200</div>
+                          <div class="docs-tree__item docs-tree__item--nested">OM-400 Pro</div>
+                          <div class="docs-tree__item docs-tree__item--nested">Gateway Hub</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header">▸ Configuration</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header">▸ Troubleshooting</div>
+                        </div>
+                      </div>
+                      <div class="docs-mockup__content">
+                        <div class="docs-mockup__breadcrumb-text">Docs / Getting Started / Overview</div>
+                        <div class="docs-mockup__h1-text">Orion Mesh Overview</div>
+                        <div class="docs-mockup__body-text">A self-healing mesh network for industrial sensor deployments. Connects up to 500 nodes across 2km² with sub-10ms latency and automatic failover.</div>
+                        <div class="docs-mockup__h2-text">Architecture</div>
+                        <div class="docs-mockup__body-text">Each deployment consists of Nodes (OM-200/400), a Gateway Hub, and the Orion Cloud dashboard for fleet management and telemetry.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Panel 1: API -->
+                  <div class="docs-tabs__panel" data-panel="1">
+                    <div class="docs-mockup__body">
+                      <div class="docs-mockup__sidebar">
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ REST API</div>
+                          <div class="docs-tree__item docs-tree__item--active">Authentication</div>
+                          <div class="docs-tree__item">Nodes</div>
+                          <div class="docs-tree__item">Telemetry</div>
+                          <div class="docs-tree__item">Alerts</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header">▸ WebSocket API</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header">▸ SDK Reference</div>
+                        </div>
+                      </div>
+                      <div class="docs-mockup__content">
+                        <div class="docs-mockup__breadcrumb-text">API / REST API / Authentication</div>
+                        <div class="docs-mockup__h1-text">Authentication</div>
+                        <div class="docs-mockup__body-text">All API requests require a Bearer token. Tokens are scoped per-deployment and expire after 24 hours.</div>
+                        <div class="docs-mockup__code-block">
+                          <div class="docs-code__line"><span class="docs-code__kw">POST</span> /api/v1/auth/token</div>
+                          <div class="docs-code__line"><span class="docs-code__comment">X-Api-Key: &lt;deployment_key&gt;</span></div>
+                          <div class="docs-code__line"><span class="docs-code__comment">→ { "token": "eyJhb...", "expires_in": 86400 }</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Panel 2: Guides -->
+                  <div class="docs-tabs__panel" data-panel="2">
+                    <div class="docs-mockup__body">
+                      <div class="docs-mockup__sidebar">
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ Deployment</div>
+                          <div class="docs-tree__item docs-tree__item--active">Site Survey</div>
+                          <div class="docs-tree__item">Network Planning</div>
+                          <div class="docs-tree__item">Provisioning</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ Operations</div>
+                          <div class="docs-tree__item docs-tree__item--nested">Monitoring</div>
+                          <div class="docs-tree__item docs-tree__item--nested">Firmware Updates</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header">▸ Migration</div>
+                        </div>
+                      </div>
+                      <div class="docs-mockup__content">
+                        <div class="docs-mockup__breadcrumb-text">Guides / Deployment / Site Survey</div>
+                        <div class="docs-mockup__h1-text">Site Survey Guide</div>
+                        <div class="docs-mockup__body-text">Before deploying Orion Mesh nodes, conduct a site survey to map RF coverage, identify dead zones, and plan node placement for optimal mesh density.</div>
+                        <div class="docs-mockup__h2-text">Required Equipment</div>
+                        <div class="docs-mockup__body-text">OM-Survey Kit, tablet with Orion Field app, building floor plans in PDF or DXF format.</div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- Panel 3: Blog -->
+                  <div class="docs-tabs__panel" data-panel="3">
+                    <div class="docs-mockup__body">
+                      <div class="docs-mockup__sidebar">
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ 2026</div>
+                          <div class="docs-tree__item docs-tree__item--active">Mesh v3.2 Release</div>
+                          <div class="docs-tree__item">Customer Story: NovaTech</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header docs-tree__header--expanded">▾ 2025</div>
+                          <div class="docs-tree__item docs-tree__item--nested">Annual Review</div>
+                          <div class="docs-tree__item docs-tree__item--nested">Mesh v3.0 Launch</div>
+                        </div>
+                        <div class="docs-tree__section">
+                          <div class="docs-tree__header">▸ Archive</div>
+                        </div>
+                      </div>
+                      <div class="docs-mockup__content">
+                        <div class="docs-mockup__breadcrumb-text">Blog / 2026 / Mesh v3.2 Release</div>
+                        <div class="docs-mockup__h1-text">Mesh v3.2: Adaptive Routing</div>
+                        <div class="docs-mockup__body-text">This release introduces adaptive routing, reducing failover time from 200ms to under 10ms. Nodes now precompute backup routes based on real-time signal quality.</div>
+                        <div class="docs-mockup__code-block">
+                          <div class="docs-code__line"><span class="docs-code__kw">$</span> orion mesh status --deployment prod-east</div>
+                          <div class="docs-code__line"><span class="docs-code__comment">Nodes: 147/150 online | Latency: 4.2ms avg</span></div>
+                          <div class="docs-code__line"><span class="docs-code__comment">Routes: 312 active, 47 precomputed backups</span></div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
         </section>
 
@@ -161,34 +298,158 @@
 
         <!-- ═══════ SECTION 3: Process Timeline ═══════ -->
         <section class="process" id="process">
+
+            <!-- Step 1: text LEFT, mockup RIGHT -->
             <div class="process__step">
-                <div class="process__number">01</div>
-                <div class="process__body">
+                <div class="process__text">
+                    <span class="process__badge">STEP 01</span>
                     <h3>Audit</h3>
                     <p>We inventory every legacy asset — PDFs, Word docs, wiki pages, help articles. We map structure, identify gaps, and flag broken or outdated content so nothing gets lost in translation.</p>
                 </div>
+                <div class="process__mockup process__mockup--audit" aria-hidden="true">
+                    <div class="pmock__bar">
+                        <div class="pmock__dots"><span></span><span></span><span></span></div>
+                        <div class="pmock__filename">inventory.md</div>
+                    </div>
+                    <div class="pmock__body">
+                      <div class="pmock__sidebar">
+                        <div class="pmock__tree-header">▾ Documentation</div>
+                        <div class="pmock__tree-item pmock__tree-item--active">Content Audit</div>
+                        <div class="pmock__tree-item">Legacy Pages</div>
+                        <div class="pmock__tree-item">PDF Archive</div>
+                        <div class="pmock__tree-header">▾ Wiki Export</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Setup Guide</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Troubleshooting</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Release Notes</div>
+                        <div class="pmock__tree-header">▸ Help Center</div>
+                      </div>
+                      <div class="pmock__content">
+                        <div class="pmock__content-h1">Content Inventory</div>
+                        <div class="pmock__content-text">47 documents identified across 3 platforms. 12 flagged as outdated, 8 contain duplicate content.</div>
+                        <div class="pmock__content-h2">Coverage Map</div>
+                        <div class="pmock__status-rows">
+                          <div class="pmock__status-row"><span class="pmock__status-dot pmock__status-dot--green"></span><span>Install guides — current</span></div>
+                          <div class="pmock__status-row"><span class="pmock__status-dot pmock__status-dot--yellow"></span><span>API reference — partial</span></div>
+                          <div class="pmock__status-row"><span class="pmock__status-dot pmock__status-dot--red"></span><span>SDK docs — outdated</span></div>
+                          <div class="pmock__status-row"><span class="pmock__status-dot pmock__status-dot--red"></span><span>Release notes — missing</span></div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Step 2: mockup LEFT, text RIGHT -->
             <div class="process__step">
-                <div class="process__number">02</div>
-                <div class="process__body">
+                <div class="process__mockup process__mockup--scope" aria-hidden="true">
+                    <div class="pmock__bar">
+                        <div class="pmock__dots"><span></span><span></span><span></span></div>
+                        <div class="pmock__filename">scope.md</div>
+                    </div>
+                    <div class="pmock__body">
+                      <div class="pmock__sidebar">
+                        <div class="pmock__tree-header">▾ Project Scope</div>
+                        <div class="pmock__tree-item pmock__tree-item--active">Deliverables</div>
+                        <div class="pmock__tree-item">Timeline</div>
+                        <div class="pmock__tree-item">Pricing</div>
+                        <div class="pmock__tree-header">▸ Requirements</div>
+                        <div class="pmock__tree-header">▸ Constraints</div>
+                      </div>
+                      <div class="pmock__content">
+                        <div class="pmock__content-h1">Deliverables</div>
+                        <div class="pmock__content-text">Fixed-price engagement. All items below included in the proposal.</div>
+                        <div class="pmock__checklist-text">
+                          <div class="pmock__check-item pmock__check-item--done">✓ Product manual (40 pages)</div>
+                          <div class="pmock__check-item pmock__check-item--done">✓ Quick start guide</div>
+                          <div class="pmock__check-item pmock__check-item--done">✓ API reference migration</div>
+                          <div class="pmock__check-item">☐ Knowledge base (32 articles)</div>
+                          <div class="pmock__check-item">☐ Helix portal deployment</div>
+                        </div>
+                        <div class="pmock__content-text">Estimated timeline: 6 weeks</div>
+                      </div>
+                    </div>
+                </div>
+                <div class="process__text">
+                    <span class="process__badge">STEP 02</span>
                     <h3>Scope</h3>
                     <p>A fixed-price proposal with exact deliverables and a realistic timeline. You know the full cost before any work begins. No hourly billing, no surprise invoices.</p>
                 </div>
             </div>
+
+            <!-- Step 3: text LEFT, mockup RIGHT -->
             <div class="process__step">
-                <div class="process__number">03</div>
-                <div class="process__body">
+                <div class="process__text">
+                    <span class="process__badge">STEP 03</span>
                     <h3>Migrate</h3>
                     <p>We restructure, rewrite where needed, and publish your content to a modern platform. Docusaurus, ReadMe, custom MDX — whatever fits your stack. Full QA before staging.</p>
                 </div>
+                <div class="process__mockup process__mockup--migrate" aria-hidden="true">
+                    <div class="pmock__bar">
+                        <div class="pmock__dots"><span></span><span></span><span></span></div>
+                        <div class="pmock__filename">migration.mdx</div>
+                    </div>
+                    <div class="pmock__body">
+                      <div class="pmock__sidebar">
+                        <div class="pmock__tree-header">▾ Getting Started</div>
+                        <div class="pmock__tree-item">Introduction</div>
+                        <div class="pmock__tree-item pmock__tree-item--active">Quick Start</div>
+                        <div class="pmock__tree-item">Installation</div>
+                        <div class="pmock__tree-header">▾ Cameras</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Move 4K</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Studio Pro</div>
+                        <div class="pmock__tree-header">▸ API Reference</div>
+                      </div>
+                      <div class="pmock__content">
+                        <div class="pmock__content-h1">Quick Start Guide</div>
+                        <div class="pmock__content-text">Get your camera online in under 10 minutes. Connect via PoE, discover the device, and access the web UI.</div>
+                        <div class="pmock__mini-code">
+                          <div class="pmock__code-text"><span class="pmock__code-kw">$</span> nmap -sn 192.168.1.0/24</div>
+                          <div class="pmock__code-text"><span class="pmock__code-comment"># Found: 192.168.1.100</span></div>
+                          <div class="pmock__code-text"><span class="pmock__code-kw">$</span> curl /api/v1/status</div>
+                        </div>
+                        <div class="pmock__content-text">Navigate to the device IP to configure.</div>
+                      </div>
+                    </div>
+                </div>
             </div>
+
+            <!-- Step 4: mockup LEFT, text RIGHT -->
             <div class="process__step">
-                <div class="process__number">04</div>
-                <div class="process__body">
+                <div class="process__mockup process__mockup--handoff" aria-hidden="true">
+                    <div class="pmock__bar">
+                        <div class="pmock__dots"><span></span><span></span><span></span></div>
+                        <div class="pmock__filename">docs/index.md</div>
+                    </div>
+                    <div class="pmock__body">
+                      <div class="pmock__sidebar">
+                        <div class="pmock__tree-header">▾ Getting Started</div>
+                        <div class="pmock__tree-item pmock__tree-item--active">Overview</div>
+                        <div class="pmock__tree-item">Installation</div>
+                        <div class="pmock__tree-item">Quick Start</div>
+                        <div class="pmock__tree-header">▾ Guides</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Network Setup</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">PTZ Control</div>
+                        <div class="pmock__tree-item pmock__tree-item--nested">Streaming</div>
+                        <div class="pmock__tree-header">▸ API Reference</div>
+                      </div>
+                      <div class="pmock__content">
+                        <div class="pmock__content-h1">Documentation</div>
+                        <div class="pmock__content-text">Welcome to the official documentation portal. Everything you need to install, configure, and operate your camera system.</div>
+                        <div class="pmock__content-h2">Quick Links</div>
+                        <div class="pmock__link-cards">
+                          <div class="pmock__link-card">📦 Installation</div>
+                          <div class="pmock__link-card">⚡ Quick Start</div>
+                          <div class="pmock__link-card">🔧 API Docs</div>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                <div class="process__text">
+                    <span class="process__badge">STEP 04</span>
                     <h3>Handoff</h3>
                     <p>You receive full ownership of the new system, a team training session, and an optional maintenance plan. Your docs. Your platform. Your control.</p>
                 </div>
             </div>
+
         </section>
 
         <!-- ═══════ SECTION 4: Proof — Poster Scale Stats ═══════ -->
@@ -377,6 +638,49 @@
         window.addEventListener('scroll', () => {
             navbar.classList.toggle('scrolled', window.scrollY > 50);
         });
+
+        // ── Hero tab cycling ──
+        (function() {
+            const panels = document.querySelectorAll('.docs-tabs__panel');
+            const navItems = document.querySelectorAll('#docs-tabs-nav .docs-mockup__navtext');
+            if (!panels.length) return;
+
+            let current = 0;
+            let intervalId = null;
+
+            function cycleTab() {
+                panels[current].classList.remove('docs-tabs__panel--active');
+                navItems[current].classList.remove('docs-mockup__navtext--active');
+                current = (current + 1) % panels.length;
+                panels[current].classList.add('docs-tabs__panel--active');
+                navItems[current].classList.add('docs-mockup__navtext--active');
+            }
+
+            function startCycling() {
+                if (intervalId) return;
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+                intervalId = setInterval(cycleTab, 3000);
+            }
+
+            const modernEl = document.querySelector('.split__doc--modern');
+            if (modernEl) {
+                modernEl.addEventListener('animationend', startCycling, { once: true });
+                setTimeout(function() {
+                    if (!intervalId) startCycling();
+                }, 2000);
+            } else {
+                setTimeout(startCycling, 2000);
+            }
+
+            window.matchMedia('(prefers-reduced-motion: reduce)').addEventListener('change', function(e) {
+                if (e.matches && intervalId) {
+                    clearInterval(intervalId);
+                    intervalId = null;
+                } else if (!e.matches && !intervalId) {
+                    startCycling();
+                }
+            });
+        })();
     </script>
 </body>
 </html>
